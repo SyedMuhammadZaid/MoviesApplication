@@ -5,10 +5,11 @@
     height: 450px;
     background-color: var(--black);
     display: flex;
-    align-items: center;
+    align-items:center;
     position: relative;
     @include md {
         height: 700px;
+        padding-bottom: 6%;
     }
 }
 
@@ -18,7 +19,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    
     opacity: 0.5;
     overflow: hidden;
 }
@@ -95,7 +95,7 @@
 
     button{
         width: 30%;
-        padding: 14px 10px;
+        padding: 15px 10px;
         border: none;
         outline: none;
         border-radius: 0px 20px 20px 0px;

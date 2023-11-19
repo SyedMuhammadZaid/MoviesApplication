@@ -8,7 +8,8 @@ import {Routes,Route} from 'react-router-dom'
 import {GET} from '../src/Utils/api'
 import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
-import {getApiConfiguration} from '../src/Store/homeSlice'
+import {getApiConfiguration,getGenres} from '../src/Store/homeSlice'
+
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
 
   useEffect(()=>{
     fetchingbasedata()
+    fetchinggenres()
   },[])
 
   const fetchingbasedata = async () => {
@@ -27,6 +29,26 @@ function App() {
       poster : resp?.data?.images?.secure_base_url + "original",
     }
     dispatch(getApiConfiguration(respdata))
+  }
+
+  const fetchinggenres = async ()  => {
+    const endpoints = ['movie','tv'];
+    const promises = [];
+    const genreslist = {};
+    endpoints.forEach((url) => {
+      promises.push(GET(`/genre/${url}/list`))
+    })
+    const resp = await Promise?.all(promises)
+
+    resp.map((genre) => {
+      const {genres} = genre?.data;
+      return (
+        genres.map((item) => {
+          genreslist[item?.id] = item;
+        })
+      )
+    })
+    genreslist && dispatch(getGenres(genreslist))
   }
 
   return (

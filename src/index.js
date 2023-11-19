@@ -21,7 +21,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
        <App />
      </QueryClientProvider>
-    {/* <Footer /> */}
+    <Footer />
     </BrowserRouter>
   </Provider>
 );

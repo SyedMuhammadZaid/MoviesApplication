@@ -11,6 +11,7 @@ const ContentWrapper = ({ chlildren }) => {
         margin: "0 auto",
         padding: "0 20px",
       }}
+      className='contentWrapper'
     >
       <Col span={24}>{chlildren}</Col>
     </Row>
